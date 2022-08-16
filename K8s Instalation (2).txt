@@ -1,0 +1,38 @@
+How to install K8s
+1) Set Hostnames
+2) Edit /etc/hosts file
+3) Disable SELinux
+4) Disable firewalld service
+5) Setup Kubernetes Repo
+6) Installing Kubeadm and Docker, Enable and start the services
+7) Disable Swap
+8) Initialize Kubernetes Cluster
+9) Installing Pod Network using Calico network
+10) Join Worker Nodes
+
+
+1.  hostnamectl set-hostname k8smaster (On Master)
+    hostnamectl set-hostname k8sworker1(On Node1)
+
+
+2. 172.16.238.244 k8smaster
+3. setenforce 0
+4. systemctl disable firewalld
+5. cat /etc/yum.repos.d/kubernetes.repo
+   [kubernetes]
+   name=Kubernetes
+   baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+   enabled=1
+   gpgcheck=1
+   repo_gpgcheck=1
+   gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+   
+6. yum install -y kubelet kubeadm kubectl --disableexcludes=kubernetes
+7. systemctl enable --now kubelet
+8. systemctl enable docker
+9. systemctl enable kubelet
+10. systemctl status docker
+11. systemctl status kubelet
+12. swapoff -a
+13. kubeadm init
+14.    

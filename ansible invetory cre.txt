@@ -1,0 +1,42 @@
+vpn
+ip putty
+login cred
+
+ansible -- version
+ssh-keygen 
+enter
+enter
+
+  ssh-copy-id -i /home/hnncentos2/.ssh/id_rsa.pub 172.16.238.41
+ssh 172.16.238.41
+
+exit ( back to my server)
+
+ ssh-copy-id -i /home/hnncentos2/.ssh/id_rsa.pub 172.16.238.41
+ssh 172.16.238.40
+
+passward hnnbatch4
+
+ssh-copy-id -i /home/hnncentos2/.ssh/id_rsa.pub 172.16.238.41
+ssh 172.16.238.35
+hnnbatch4
+
+creating dictory
+mkdir ansible2
+cd ansible2/
+vi inventory.txt
+need to enter ips hostname
+
+hnncentosv2-44 ansible_host=172.16.238.40 ansible_ssh_pass=hnnbatch4
+hnncentosv2-40 ansible_host=172.16.238.35 ansible_ssh_pass=hnnbatch4
+hnncentosv2-30 ansible_host=172.16.238.25 ansible_ssh_pass=hnnbatch4
+save the file
+
+ansible hnncentosv2-44 -m ping -i inventory.txt
+success will appear
+
+sucess
+ansible hnncentosv2-30 -m ping -i inventory.txt
+sucess
+
+
